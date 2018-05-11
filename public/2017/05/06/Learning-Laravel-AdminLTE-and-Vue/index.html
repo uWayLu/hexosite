@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Laravel-AdminLTE 中如何使用 Vue 開發 | とあるuWayの固有結界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Laravel-AdminLTE 中如何使用 Vue 開發 page source 反查出 app.js 於 Vue 虛擬 DOM 中新增測試訊息並顯示  1234567// public/js/app.jsvar app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123;    message: &apos;Hello, World! 20170506 added; w">
+<meta name="keywords" content="web開發,開發,Laravel,posted,tools,F2E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel-AdminLTE 中如何使用 Vue 開發">
+<meta property="og:url" content="https://uwaylu.github.io/2017/05/06/Learning-Laravel-AdminLTE-and-Vue/index.html">
+<meta property="og:site_name" content="とあるuWayの固有結界">
+<meta property="og:description" content="Laravel-AdminLTE 中如何使用 Vue 開發 page source 反查出 app.js 於 Vue 虛擬 DOM 中新增測試訊息並顯示  1234567// public/js/app.jsvar app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123;    message: &apos;Hello, World! 20170506 added; w">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2018-05-11T15:39:34.034Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Laravel-AdminLTE 中如何使用 Vue 開發">
+<meta name="twitter:description" content="Laravel-AdminLTE 中如何使用 Vue 開發 page source 反查出 app.js 於 Vue 虛擬 DOM 中新增測試訊息並顯示  1234567// public/js/app.jsvar app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123;    message: &apos;Hello, World! 20170506 added; w">
+  
+    <link rel="alternate" href="/atom.xml" title="とあるuWayの固有結界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">とあるuWayの固有結界</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">これらは全て偽物だ...</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://uwaylu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Learning-Laravel-AdminLTE-and-Vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/06/Learning-Laravel-AdminLTE-and-Vue/" class="article-date">
+  <time datetime="2017-05-05T16:00:00.000Z" itemprop="datePublished">2017-05-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Laravel-AdminLTE 中如何使用 Vue 開發
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Laravel-AdminLTE-中如何使用-Vue-開發"><a href="#Laravel-AdminLTE-中如何使用-Vue-開發" class="headerlink" title="Laravel-AdminLTE 中如何使用 Vue 開發"></a>Laravel-AdminLTE 中如何使用 Vue 開發</h1><ol>
+<li>page source 反查出 app.js</li>
+<li>於 Vue 虛擬 DOM 中新增測試訊息並顯示</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// public/js/app.js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Hello, World! 20170506 added; webpack test.'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>此 app.js 為打包出來的檔案；故配置前端開發環境，從塊源碼開發</li>
+<li>詳細的<a href="http://laravelacademy.org/post/6798.html" title="[ Laravel 5.4 文档 ] 前端 —— 编译资源（Laravel Mix）" target="_blank" rel="noopener">解惑文件</a></li>
+</ol>
+<h2 id="Laravel-project-中配置前端開發環境"><a href="#Laravel-project-中配置前端開發環境" class="headerlink" title="Laravel project 中配置前端開發環境"></a>Laravel project 中配置前端開發環境</h2><p>Laravel 5.4+ 後有 Laravel Mix，能夠定義 webpack 的 compile script.</p>
+<ol>
+<li>如果 new project 時沒有還原相依的 node_modules，須作 <code>npm install</code></li>
+<li>透過 Mix 執行 webpack compile； <code>npm run dev</code> | <code>npm run production</code></li>
+<li>開發時可執行 <code>npm run watch</code> ，監聽到修改時自動編譯文件</li>
+</ol>
+<h2 id="Windows-下-npm-run-可能會遇到的錯誤"><a href="#Windows-下-npm-run-可能會遇到的錯誤" class="headerlink" title="Windows 下 npm run 可能會遇到的錯誤"></a>Windows 下 npm run 可能會遇到的錯誤</h2><ol>
+<li>node-sass 找不到路徑之錯誤，透過 <code>npm rebuild node-sass</code> 修復；見<a href="http://stackoverflow.com/questions/39173020/laravel-elixir-sass-error" title="Laravel elixir Sass error" target="_blank" rel="noopener">Stackflow: Laravel elixir Sass error</a></li>
+<li>(adminLTE) /img/boxed-bg.jpg 之相關報錯，在 <code>webpack.mix.js</code> 中新增 <code>mix.options({ processCssUrls: false });</code>；<br>見<a href="https://github.com/almasaeed2010/AdminLTE/issues/1360" title="Dependencies error with new laravel (5.4) webpack." target="_blank" rel="noopener">AdminLTE on Github: Dependencies error with new laravel (5.4) webpack.</a></li>
+<li><code>npm install cross-env --save-dev</code> ；<a href="https://segmentfault.com/a/1190000005811347" title="使用cross-env解决跨平台设置NODE_ENV的问题" target="_blank" rel="noopener">使用cross-env解决跨平台设置NODE_ENV的问题</a></li>
+</ol>
+<!-- 參考資料 -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://uwaylu.github.io/2017/05/06/Learning-Laravel-AdminLTE-and-Vue/" data-id="cjh25pjj70007rkkxg1wohbuq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/f2e/">F2E</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/19/Learning-Laravel-AdminLTE-and-bootstrapVue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在 Laravel-AdminLTE 中使用 bootstrapVue
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/17/Learning-Laravel-Composer-and-EvernoteAPI/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Laravel 學習筆記（五）：Composer 與 Evernote API</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/f2e/">F2E</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/posted/">posted</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web開發/">web開發</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/開發/">開發</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/f2e/" style="font-size: 10px;">F2E</a> <a href="/tags/laravel/" style="font-size: 16.67px;">Laravel</a> <a href="/tags/php/" style="font-size: 13.33px;">PHP</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/posted/" style="font-size: 20px;">posted</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/web開發/" style="font-size: 16.67px;">web開發</a> <a href="/tags/開發/" style="font-size: 16.67px;">開發</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/03/Static-Pages-on-Github/">Static Pages on Github</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/12/Learning-Laravel-Host-on-Byethost-(abandoned)/">HOST Laravel on byethost (abandoned)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/Learning-Laravel-AdminLTE-and-bootstrapVue/">在 Laravel-AdminLTE 中使用 bootstrapVue</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/Learning-Laravel-AdminLTE-and-Vue/">Laravel-AdminLTE 中如何使用 Vue 開發</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Webb Lu (uWay)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

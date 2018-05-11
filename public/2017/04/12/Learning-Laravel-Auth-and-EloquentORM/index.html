@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Laravel 學習筆記（二）：Auth and Eloquent ORM | とあるuWayの固有結界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="從 Laravel 5 的 Auth 開始學習本系列筆記跟隨 johnlui/Learn-Laravel-5 的教學脈絡；2016 版 Laravel 系列入门教程（二） 透過 PHP 5.4 Trait 特性所實現的 Auth 機制，可以應付輕量權限系統之需求。本篇用到的 sh 指令整理如下： 123456789101112131415# Auth 系統，並 migrate 相對應的資料表php">
+<meta name="keywords" content="web開發,開發,PHP,Laravel,posted">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 學習筆記（二）：Auth and Eloquent ORM">
+<meta property="og:url" content="https://uwaylu.github.io/2017/04/12/Learning-Laravel-Auth-and-EloquentORM/index.html">
+<meta property="og:site_name" content="とあるuWayの固有結界">
+<meta property="og:description" content="從 Laravel 5 的 Auth 開始學習本系列筆記跟隨 johnlui/Learn-Laravel-5 的教學脈絡；2016 版 Laravel 系列入门教程（二） 透過 PHP 5.4 Trait 特性所實現的 Auth 機制，可以應付輕量權限系統之需求。本篇用到的 sh 指令整理如下： 123456789101112131415# Auth 系統，並 migrate 相對應的資料表php">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2018-05-11T16:01:23.100Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Laravel 學習筆記（二）：Auth and Eloquent ORM">
+<meta name="twitter:description" content="從 Laravel 5 的 Auth 開始學習本系列筆記跟隨 johnlui/Learn-Laravel-5 的教學脈絡；2016 版 Laravel 系列入门教程（二） 透過 PHP 5.4 Trait 特性所實現的 Auth 機制，可以應付輕量權限系統之需求。本篇用到的 sh 指令整理如下： 123456789101112131415# Auth 系統，並 migrate 相對應的資料表php">
+  
+    <link rel="alternate" href="/atom.xml" title="とあるuWayの固有結界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">とあるuWayの固有結界</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">これらは全て偽物だ...</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://uwaylu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Learning-Laravel-Auth-and-EloquentORM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/12/Learning-Laravel-Auth-and-EloquentORM/" class="article-date">
+  <time datetime="2017-04-11T16:00:00.000Z" itemprop="datePublished">2017-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Laravel 學習筆記（二）：Auth and Eloquent ORM
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="從-Laravel-5-的-Auth-開始學習"><a href="#從-Laravel-5-的-Auth-開始學習" class="headerlink" title="從 Laravel 5 的 Auth 開始學習"></a>從 Laravel 5 的 Auth 開始學習</h1><p>本系列筆記跟隨 <a href="https://github.com/johnlui/Learn-Laravel-5/" title="2016 版 Laravel 系列入门教程" target="_blank" rel="noopener">johnlui/Learn-Laravel-5</a> 的教學脈絡；<br><a href="https://github.com/johnlui/Learn-Laravel-5/issues/5" title="2016 版 Laravel 系列入门教程（二）" target="_blank" rel="noopener">2016 版 Laravel 系列入门教程（二）</a></p>
+<p>透過 PHP 5.4 Trait 特性所實現的 Auth 機制，可以應付輕量權限系統之需求。本篇用到的 sh 指令整理如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Auth 系統，並 migrate 相對應的資料表</span></span><br><span class="line">php artisan make:auth</span><br><span class="line">php artisan migrate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 學習 Eloquent，以生成 Article 為例</span></span><br><span class="line">php artisan make:model Article</span><br><span class="line">php artisan make:migration create_article_table</span><br><span class="line">subl database/migrations/*_create_article_table.php</span><br><span class="line">php artisan migrate <span class="comment"># migrate 前須於對應的 database/migrations/*_create_article_table.php 中描述 up 時的 Schema; down 就隨便</span></span><br><span class="line"></span><br><span class="line">php artisan make:seeder ArticleSeeder</span><br><span class="line">subl database/migrations/ArtilceSeeder.php</span><br><span class="line">subl database/migrations/DatabaseSeeder.php</span><br><span class="line">composer dump-autoload</span><br><span class="line">php artisan db:seed</span><br></pre></td></tr></table></figure>
+<h2 id="設置-env-開發環境"><a href="#設置-env-開發環境" class="headerlink" title="設置 .env 開發環境"></a>設置 .env 開發環境</h2><p>透過 <code>php artisan serve</code> 指令可以在 8000 port 啟動開發模式，開發模式所需要的參數如 DB 登入帳號密碼在 .env 中設置；  </p>
+<h2 id="php-artisan-migrate"><a href="#php-artisan-migrate" class="headerlink" title="php artisan migrate"></a>php artisan migrate</h2><p>/database/migrations/*.php 的文件中，用 PHP 描述 database.table 構造，透過 php artisan migrate 一次性遷徙好已定義的資料庫結構。</p>
+<blockquote>
+<p><strong>Note</strong>: Laravel 5.4 migrate 時可能會遇到報錯 <code>Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes</code>,<br><a href="http://stackoverflow.com/questions/23786359/laravel-migration-unique-key-is-too-long-even-if-specified" title="Laravel 5.4: Specified key was too long error, Laravel News" target="_blank" rel="noopener">解決方法</a>是修改 /app/Providers/AppServiceProvider.php，如下</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Schema::defaultStringLength(<span class="number">191</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="初學-Laravel-Eloquent-ORM"><a href="#初學-Laravel-Eloquent-ORM" class="headerlink" title="初學 Laravel Eloquent ORM"></a>初學 Laravel Eloquent ORM</h2><p>我的 sublime evernote 畫不出流程圖，先 pass  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://uwaylu.github.io/2017/04/12/Learning-Laravel-Auth-and-EloquentORM/" data-id="cjh25pjiy0001rkkxow5aknql" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/15/Learning-Laravel-Routing-Namespace-and-MVC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Laravel 學習筆記（三）：Routing, Namespace, and MVC
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/11/Learning-Laravel-Install-and-Configure/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Laravel 學習筆記（一）：安裝與設置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/f2e/">F2E</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/posted/">posted</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web開發/">web開發</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/開發/">開發</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/f2e/" style="font-size: 10px;">F2E</a> <a href="/tags/laravel/" style="font-size: 16.67px;">Laravel</a> <a href="/tags/php/" style="font-size: 13.33px;">PHP</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/posted/" style="font-size: 20px;">posted</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/web開發/" style="font-size: 16.67px;">web開發</a> <a href="/tags/開發/" style="font-size: 16.67px;">開發</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/03/Static-Pages-on-Github/">Static Pages on Github</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/12/Learning-Laravel-Host-on-Byethost-(abandoned)/">HOST Laravel on byethost (abandoned)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/Learning-Laravel-AdminLTE-and-bootstrapVue/">在 Laravel-AdminLTE 中使用 bootstrapVue</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/06/Learning-Laravel-AdminLTE-and-Vue/">Laravel-AdminLTE 中如何使用 Vue 開發</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Webb Lu (uWay)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
