@@ -81,4 +81,3 @@ theme: landscape
 deploy:
   type: git
   repo: git@github.com:uWayLu/uwaylu.github.io.git
-  branch: gh-pages
