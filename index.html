@@ -69,6 +69,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-學習-nuxt-auth" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/29/學習-nuxt-auth/" class="article-date">
+  <time datetime="2018-06-29T15:02:42.000Z" itemprop="datePublished">2018-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/29/學習-nuxt-auth/">學習 Nuxt Auth</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="學習-Nuxt-Auth"><a href="#學習-Nuxt-Auth" class="headerlink" title="學習 Nuxt Auth"></a>學習 Nuxt Auth</h1><p>一陣子沒碰前端了，先前用 nuxt 做了兩個起始專案<br>一個是練習用，Vuetify + Nuxt 做了 FGO 的活動兌換計算機<br>以及看別人 firebase + Nuxt 是怎麼整合</p>
+<ul>
+<li><a href="https://github.com/uWayLu/Pratice" target="_blank" rel="noopener">GitHub: Practice</a></li>
+<li>公司的線上金流服務維護後台 UI</li>
+</ul>
+<p>但一直有個問題就是，怎麼去實作 Auth Route 部份這塊<br>先前只學習到 pathToPage 會根據 Nuxt 下的目錄結構去生成</p>
+<p>最近要實作權限管理，因為將專案的前後端分離，<br>後端只提供 api 去請求資源<br>趕快來惡補一下整個權限的架構</p>
+<h2 id="權限策略"><a href="#權限策略" class="headerlink" title="權限策略"></a>權限策略</h2><p>在 <a href="https://blog.csdn.net/harsima/article/details/77949448" title="Vue + ElementUI 手撸后台管理网站基本框架(二)权限控制" target="_blank" rel="noopener">Vue + ElementUI 手撸后台管理网站基本框架(二)权限控制</a>中</p>
+<blockquote>
+<p>前端记录所有的权限。用户登录后，后端返回用户角色，前端根据角色自行分配页面<br>前端仅记录页面，后端记录权限。<br>用户登陆后，后端返回用户权限列表，前端根据该列表生成可访问页面</p>
+</blockquote>
+<p>基本上就是 2，所以會有最高權限，部份權限，一般人員大概三個等級</p>
+<h2 id="Auth"><a href="#Auth" class="headerlink" title="Auth"></a>Auth</h2><p>驗證基本上是 middleware 有登入狀態的導向，以及非登入狀態的導向處理<br>根據頁面的性質去引入對應的 middleware<br>(比如說，註冊、登入、GUEST 這些頁面是不需要登入的，<br>而個人資料當然要登入狀態才能夠訪問)</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>好，又是標準離題<br>基本上目前專案卡的問題是在需求變更，<br>需要追加權限的功能去允許多站台共用同一後台<br>當初自己設計的簡單 ORM 沒有考慮到分站台，<br>schema 要變更的情況下，db 部署也是問題<br>並且因為要分站台撈取資料，以及允許後台做 CRUD，複雜度直接上升<br>在後端架構處理好後，再來考慮 UI 的動態 router 問題</p>
+<!-- References -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://uwaylu.github.io/2018/06/29/學習-nuxt-auth/" data-id="cjj07bpmo000d29kx4p2k1kxn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/11/hello-world/" class="article-date">
@@ -104,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2018/05/11/hello-world/" data-id="cjh26yfq7002el5kx6p2zun4w" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2018/05/11/hello-world/" data-id="cjj07bpms000e29kxv2wpbki3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -218,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/08/03/Static-Pages-on-Github/" data-id="cjh26yfp9000bl5kxh1ryrrgf" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2017/08/03/Static-Pages-on-Github/" data-id="cjj07bpmm000b29kxax8oehea" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li></ul>
@@ -276,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/06/12/Learning-Laravel-Host-on-Byethost-(abandoned)/" data-id="cjh26yfp8000al5kxq8fd5tkd" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2017/06/12/Learning-Laravel-Host-on-Byethost-(abandoned)/" data-id="cjj07bpml000a29kxp9pxjal3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
@@ -328,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/05/19/Learning-Laravel-AdminLTE-and-bootstrapVue/" data-id="cjh26yfp60008l5kxjptglq4x" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2017/05/19/Learning-Laravel-AdminLTE-and-bootstrapVue/" data-id="cjj07bpmj000829kxj72ks051" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
@@ -387,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/05/06/Learning-Laravel-AdminLTE-and-Vue/" data-id="cjh26yfp50007l5kxy103yjyn" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2017/05/06/Learning-Laravel-AdminLTE-and-Vue/" data-id="cjj07bpmh000729kx2mc0otbk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/f2e/">F2E</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
@@ -455,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/04/17/Learning-Laravel-Composer-and-EvernoteAPI/" data-id="cjh26yfp40005l5kxnhygsi18" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2017/04/17/Learning-Laravel-Composer-and-EvernoteAPI/" data-id="cjj07bpmg000529kx4dq5j0nl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
@@ -582,7 +633,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/04/16/Learning-Laravel-Simple-blog/" data-id="cjh26yfp20004l5kxg9jlvr3o" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2017/04/16/Learning-Laravel-Simple-blog/" data-id="cjj07bpme000429kxbepyqxss" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
@@ -655,7 +706,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/04/15/Learning-Laravel-Routing-Namespace-and-MVC/" data-id="cjh26yfp10003l5kx6ii7yysi" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2017/04/15/Learning-Laravel-Routing-Namespace-and-MVC/" data-id="cjj07bpmd000329kxpfxcwq0e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
@@ -703,77 +754,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/04/12/Learning-Laravel-Auth-and-EloquentORM/" data-id="cjh26yfox0001l5kx0cx98gmu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Learning-Laravel-Install-and-Configure" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/11/Learning-Laravel-Install-and-Configure/" class="article-date">
-  <time datetime="2017-04-10T16:00:00.000Z" itemprop="datePublished">2017-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/11/Learning-Laravel-Install-and-Configure/">Laravel 學習筆記（一）：安裝與設置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本系列筆記跟隨 <a href="https://github.com/johnlui/Learn-Laravel-5/" title="2016 版 Laravel 系列入门教程" target="_blank" rel="noopener">johnlui/Learn-Laravel-5</a> 的教學脈絡；<br><a href="https://github.com/johnlui/Learn-Laravel-5/issues/4" title="2016 版 Laravel 系列入门教程（一）" target="_blank" rel="noopener">2016 版 Laravel 系列入门教程（一）</a></p>
-<p>說要學 Laravel 說好久，前前後後斷斷續續也裝了三四次，<br>這次要設置環境看著 Manual 還是要花點時間思考，看來還是老實作筆記實在。</p>
-<p>之前曾經使用過 composer 安裝、以 git clone 方式安裝<a href="https://octobercms.com/" title="OcterberCMS" target="_blank" rel="noopener">基於Laravel 的 CMS: OctoberCMS</a>。</p>
-<blockquote>
-<p><strong>Note:</strong> 從 Github clone 的專案大部分都要補檔案才能執行，缺失檔案見專案內的 .gitignore,</p>
-<ul>
-<li>Laravel 專案 composer install 一下，透過 composer.json 還原相依檔案</li>
-<li>如果遇到 APP_KEY 相關報錯，可能是缺少 APP_KEY。透過 php artisan key:generate 產生 APP_KEY，<br>缺哪補哪，一個蘿蔔一個坑的補上即可。</li>
-<li>在此篇文章<a href="http://oomusou.io/laravel/laravel-clone-from-github/" title="如何重建由GitHub下載的Laravel專案?" target="_blank" rel="noopener">如何重建由GitHub下載的Laravel專案?</a>可以看到更詳細的敘述</li>
-</ul>
-</blockquote>
-<h2 id="安裝和設置"><a href="#安裝和設置" class="headerlink" title="安裝和設置"></a>安裝和設置</h2><p><strong>1.</strong> 使用 composer 安裝</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer create-project --prefer-dist laravel/laravel dirname</span><br></pre></td></tr></table></figure>
-<p><strong>2.</strong> 設定 appache 的 vhost.conf，直接將 domain 導到網站根目錄下的 web 應用資料夾<br><strong>3.</strong> 設定 config 中的 app.php</p>
-<blockquote>
-<p><strong>Note:</strong> 非必要；將時區設定成 ‘Asia/Taipei’；<br>開發環境 ENV 及 debug error 可以透過 .env 開發時變更  </p>
-</blockquote>
-<p><strong>4.</strong> 設定 config 中的 database.php  </p>
-<blockquote>
-<p><strong>Note:</strong> 設定 ‘mysql’ 設定值即可，除非要使用其他類型的資料庫  </p>
-</blockquote>
-<p><strong>5.</strong> 設定 git，透過 git 來作版本控制（雖然我都推得亂七八糟的）  </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init  </span><br><span class="line">git remote add origin https://github.com/uWayLu/webblara.git  </span><br><span class="line">git add .  </span><br><span class="line">git commit -m <span class="string">"initial commit"</span>  </span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin master</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>創建了 subl-proj 資料夾管理 sublime project<br>.gitignore 增加兩個要排除的資料夾: /config 和 /subl-proj<br>第一次 –set-upstream 後，之後只要 git push 就可以推到遠端庫囉</p>
-</blockquote>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="http://blog.fukuball.com/laravel-xue-xi-bi-ji-lesson-2/" target="_blank" rel="noopener">LARAVEL 學習筆記 LESSON 2</a></li>
-<li><a href="https://laravel.tw/docs/5.3/configuration" target="_blank" rel="noopener">LARAVEL 台灣 docs 5.3</a></li>
-<li><a href="http://oomusou.io/laravel/laravel-clone-from-github/" target="_blank" rel="noopener">如何重建由GitHub下載的Laravel專案?</a></li>
-</ul>
-<!-- 以下註解連結 -->
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://uwaylu.github.io/2017/04/11/Learning-Laravel-Install-and-Configure/" data-id="cjh26yfor0000l5kxk73fqx6a" class="article-share-link">Share</a>
+      <a data-url="https://uwaylu.github.io/2017/04/12/Learning-Laravel-Auth-and-EloquentORM/" data-id="cjj07bpm8000129kxi8spaupa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/posted/">posted</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web開發/">web開發</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/開發/">開發</a></li></ul>
@@ -786,6 +767,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -817,7 +803,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
     </div>
   </div>
 
@@ -828,6 +814,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/06/29/學習-nuxt-auth/">學習 Nuxt Auth</a>
+          </li>
         
           <li>
             <a href="/2018/05/11/hello-world/">Hello World</a>
@@ -843,10 +833,6 @@
         
           <li>
             <a href="/2017/05/19/Learning-Laravel-AdminLTE-and-bootstrapVue/">在 Laravel-AdminLTE 中使用 bootstrapVue</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/06/Learning-Laravel-AdminLTE-and-Vue/">Laravel-AdminLTE 中如何使用 Vue 開發</a>
           </li>
         
       </ul>
