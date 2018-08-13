@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="posted,jekyll," />
+  <meta name="keywords" content="aria2 downloader magnet bitconnect," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Why I use Jekyll. 筆記與靜態頁面很合適，更新頻率不高。 可以與線上服務分離，以檔案形式(*.md)保存資料。  我嘗試過以下作法：  Joomla! on OpenShift WordPress on OpenShift  1 和 2 真的是很懶得維護；還沒開始大量撰寫就擔心備份問題，過於完善的後台實在看了讓人頭痛；不想套樣式又不想自己刻，好吧就是懶！   Larvel 5.3">
-<meta name="keywords" content="posted,jekyll">
+<meta name="description" content="配置 Aria2 的設定cli 使用方式很直覺，就是 aria2c source_url 然後支援幾種參數 aria2c https://uwaylu.github.io aria2c -x2 https://uwaylu.github.io 2 connections aria2c https://uwaylu.github.io https://uwaylu2.github.io from 2">
+<meta name="keywords" content="aria2 downloader magnet bitconnect">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Static Pages on Github">
-<meta property="og:url" content="https://uwaylu.github.io/2017/08/03/Static-Pages-on-Github/index.html">
+<meta property="og:title" content="Configure My Aria2">
+<meta property="og:url" content="https://uwaylu.github.io/2018/08/13/configure-my-aria2/index.html">
 <meta property="og:site_name" content="とあるuWayの固有結界">
-<meta property="og:description" content="Why I use Jekyll. 筆記與靜態頁面很合適，更新頻率不高。 可以與線上服務分離，以檔案形式(*.md)保存資料。  我嘗試過以下作法：  Joomla! on OpenShift WordPress on OpenShift  1 和 2 真的是很懶得維護；還沒開始大量撰寫就擔心備份問題，過於完善的後台實在看了讓人頭痛；不想套樣式又不想自己刻，好吧就是懶！   Larvel 5.3">
+<meta property="og:description" content="配置 Aria2 的設定cli 使用方式很直覺，就是 aria2c source_url 然後支援幾種參數 aria2c https://uwaylu.github.io aria2c -x2 https://uwaylu.github.io 2 connections aria2c https://uwaylu.github.io https://uwaylu2.github.io from 2">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-05-11T15:39:43.227Z">
+<meta property="og:updated_time" content="2018-08-13T16:32:13.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Static Pages on Github">
-<meta name="twitter:description" content="Why I use Jekyll. 筆記與靜態頁面很合適，更新頻率不高。 可以與線上服務分離，以檔案形式(*.md)保存資料。  我嘗試過以下作法：  Joomla! on OpenShift WordPress on OpenShift  1 和 2 真的是很懶得維護；還沒開始大量撰寫就擔心備份問題，過於完善的後台實在看了讓人頭痛；不想套樣式又不想自己刻，好吧就是懶！   Larvel 5.3">
+<meta name="twitter:title" content="Configure My Aria2">
+<meta name="twitter:description" content="配置 Aria2 的設定cli 使用方式很直覺，就是 aria2c source_url 然後支援幾種參數 aria2c https://uwaylu.github.io aria2c -x2 https://uwaylu.github.io 2 connections aria2c https://uwaylu.github.io https://uwaylu2.github.io from 2">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://uwaylu.github.io/2017/08/03/Static-Pages-on-Github/"/>
+  <link rel="canonical" href="https://uwaylu.github.io/2018/08/13/configure-my-aria2/"/>
 
 
 
 
 
-  <title>Static Pages on Github | とあるuWayの固有結界</title>
+  <title>Configure My Aria2 | とあるuWayの固有結界</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://uwaylu.github.io/2017/08/03/Static-Pages-on-Github/">
+    <link itemprop="mainEntityOfPage" href="https://uwaylu.github.io/2018/08/13/configure-my-aria2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Webb Lu (uWay)">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Static Pages on Github</h1>
+          <h1 class="post-title" itemprop="name headline">Configure My Aria2</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-03T00:00:00+08:00">
-                2017-08-03
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-08-13T21:44:14+08:00">
+                2018-08-13
               </time>
             
 
@@ -300,84 +300,43 @@
       
 
       
-        <h1 id="Why-I-use-Jekyll"><a href="#Why-I-use-Jekyll" class="headerlink" title="Why I use Jekyll."></a>Why I use Jekyll.</h1><ol>
-<li>筆記與靜態頁面很合適，更新頻率不高。</li>
-<li>可以與線上服務分離，以檔案形式(*.md)保存資料。</li>
-</ol>
-<p>我嘗試過以下作法：</p>
-<ol>
-<li><a href="https://php-keyboardsensou.rhcloud.com" target="_blank" rel="noopener">Joomla! on OpenShift</a></li>
-<li><p><a href="https://wp-keyboardsensou.rhcloud.com" target="_blank" rel="noopener">WordPress on OpenShift</a></p>
+        <h1 id="配置-Aria2-的設定"><a href="#配置-Aria2-的設定" class="headerlink" title="配置 Aria2 的設定"></a>配置 Aria2 的設定</h1><p>cli 使用方式很直覺，就是 <code>aria2c source_url</code> 然後支援幾種參數</p>
+<p><code>aria2c https://uwaylu.github.io</code></p>
+<p><code>aria2c -x2 https://uwaylu.github.io</code> 2 connections</p>
+<p><code>aria2c https://uwaylu.github.io https://uwaylu2.github.io</code> from 2 host</p>
+<p><code>aria2c -i uris.txt</code> download URIs found in text file</p>
+<p>偏好設定像是下載路徑，每次使用幾個連接等，<br>當然就是寫在 config 中記起來啦</p>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><ul>
+<li>path: <code>~/.aria2/aria2.conf</code></li>
+<li>command: <code>aria2c --conf-path=&lt;path&gt;</code></li>
+</ul>
+<p>RPC 一定要打開，預設是走 6800 port 並且非加密 http</p>
+<p>其實最詳細的官方文件，只是 RTFM 覺得心累…</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><p><a href="https://aria2.github.io/" target="_blank" rel="noopener">aria2 Official</a></p>
+</li>
+<li><p><a href="https://binux.blog/2012/12/aria2-examples/" target="_blank" rel="noopener">binux 的 aria2配置示例</a></p>
 <blockquote>
-<p>1 和 2 真的是很懶得維護；還沒開始大量撰寫就擔心備份問題，過於完善的後台實在看了讓人頭痛；不想套樣式又不想自己刻，好吧就是懶！</p>
+<p>binux 自己也寫了一個 aria2 的 webui 叫 YAAW，<br>star 數也滿高的，約是 aria2 webui 的 1/3<br>有興趣可以試試看</p>
 </blockquote>
 </li>
-<li><p>Larvel 5.3 中透過 Evernote PHP SDK，透過開發者 API 取回自己的筆記資料</p>
+<li><p><a href="https://zhuanlan.zhihu.com/p/30666881" target="_blank" rel="noopener">Aria2基础上手指南</a></p>
 <blockquote>
-<p>原本打算透過 webhook 實現 IFTTT 順便學個 Vue，然而申請 Evernote API key 久久未回覆，後來 acitve 後一樣 OAuth2 認證無法成功，同時 Google 到相同問題官方也是放生，一直在 Open Issue 的狀態；退而求其次只用開發者 API 主動 polling （官方有 15 分鐘的限制），撈到資料在後台用 Vue 展示後就暫停碼，往上線的方向測試；  </p>
-</blockquote>
-<blockquote>
-<p>然而在進行將 Laravel 上線至 byethost 時遇到問題，所以收集資料後往 4 的方向走。</p>
+<p>這篇是寫得很詳細的</p>
 </blockquote>
 </li>
-</ol>
-<ol start="4">
-<li>Google Blogger<blockquote>
-<p>可以透過 Google blogger API 或者發送信件方式做 Post，不過後來為了與線上服務分離，就擁向 jekyll 的懷抱了。<br>evernote + markdown + github.io</p>
-</blockquote>
+<li><p><a href="http://aria2c.com/usage.html" target="_blank" rel="noopener">configure file example</a></p>
 </li>
-</ol>
-<p>相關資訊：</p>
-<ol>
-<li><a href="https://www.staticgen.com/" target="_blank" rel="noopener">StaticGen: Top Open-Source Static Site Generators</a></li>
-<li>以前申請過 Koding, 現在 Policy 也改變了，使用者付費囉！<br>只好摸摸鼻子繼續異機設定環境</li>
-</ol>
-<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ol>
-<li><p>Ruby</p>
+<li><p><a href="https://wiki.archlinux.org/index.php/aria2" target="_blank" rel="noopener">Archlinux wiki: Aria2</a></p>
 <blockquote>
-<p>Windows 透過 <a href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener">RubyInstaller</a><br>CentOS 請搜索 rvm;<br>ruby v2.4+ 可在 CLI 透過 ridk install 安裝開發工具；<br>older version 需要抓 devkit</p>
-</blockquote>
-</li>
-<li><p>Python2</p>
-<blockquote>
-<p>需要 Python2 將 markdown 轉譯成 html</p>
-</blockquote>
-</li>
-<li><p><a href="https://jekyllrb.com/docs/upgrading/2-to-3/" target="_blank" rel="noopener">jekyllrb.com</a></p>
-<blockquote>
-<p><code>gem install jekyll bundler jekyll-paginate jekyll-gist pygments.rb redcarpet</code></p>
-</blockquote>
-</li>
-</ol>
-<h2 id="Noticed"><a href="#Noticed" class="headerlink" title="Noticed"></a>Noticed</h2><ol>
-<li>Jekyll 3 的 _config.yml 中，變數 gems 已棄用，請改用 plugins</li>
-<li><p>Syntax Highlighter</p>
-<blockquote>
-<p>As of v3.0 Jekyll now uses Rouge as the default syntax highlighter.<br>Github only supports Rouge.</p>
-</blockquote>
-</li>
-<li><p>Markdown Processor</p>
-<blockquote>
-<p>Jekyll v3.x uses kramdown as its default Markdown engine and Github only supports kramdown.</p>
-</blockquote>
-</li>
-<li><p>其實在 <em>config.yml 中使用了不支援的插件，馬上就會收到 GitHub 寄來的通知信了 ˊ\</em>&gt;ˋ</p>
-</li>
-</ol>
-<h2 id="Resume"><a href="#Resume" class="headerlink" title="Resume"></a>Resume</h2><ul>
-<li><p><a href="https://jsonresume.org/" target="_blank" rel="noopener">JSON Resume</a></p>
-<blockquote>
-<p><strong>Noticed:</strong> If you use branch except gh-pages in the project repo, the feature mapping <code>/</code> to <code>index.*</code> files does not work. </p>
+<p>後來才發現 ArchWiki 有 aria2 資訊頁而且還滿有用的</p>
+<ul>
+<li>seperate configuration to multiple file by download types,<br>each config var has a corrsponding description</li>
+<li>AUR of ui</li>
+</ul>
 </blockquote>
 </li>
 </ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
-<li><a href="http://mis101bird.js.org/jekyll_first_try/" target="_blank" rel="noopener">[jekyll]我的第一個Github個人網站</a></li>
-<li><a href="http://shyhornet.github.io/2015/10/18/第一篇文章/" target="_blank" rel="noopener">JEKYLL初探</a></li>
-<li>分解 URI <a href="http://downtothewire.io/2015/08/15/configuring-jekyll-for-user-and-project-github-pages/" target="_blank" rel="noopener">Configuring Jekyll for User and Project GitHub Pages</a></li>
-<li><a href="https://tecadmin.net/install-ruby-2-4-centos-rvm/" target="_blank" rel="noopener">How to Install Ruby 2.4.0 on CentOS/RHEL with RVM</a></li>
-<li><a href="https://github.com/blog/2151-github-pages-drops-support-for-rdiscount-redcarpet-and-redcloth-textile-markup-engines" target="_blank" rel="noopener">GitHub Pages drops support for RDiscount, Redcarpet, and RedCloth (Textile) markup engines</a></li>
-</ol>
 
       
     </div>
@@ -395,9 +354,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/posted/" rel="tag"># posted</a>
-          
-            <a href="/tags/jekyll/" rel="tag"># jekyll</a>
+            <a href="/tags/aria2-downloader-magnet-bitconnect/" rel="tag"># aria2 downloader magnet bitconnect</a>
           
         </div>
       
@@ -410,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/12/Learning-Laravel-Host-on-Byethost-(abandoned)/" rel="next" title="HOST Laravel on byethost (abandoned)">
-                <i class="fa fa-chevron-left"></i> HOST Laravel on byethost (abandoned)
+              <a href="/2018/08/12/configure-react-native-devlopment-environment/" rel="next" title="Configure-React-Native-Devlopment-Environment">
+                <i class="fa fa-chevron-left"></i> Configure-React-Native-Devlopment-Environment
               </a>
             
           </div>
@@ -419,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/11/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -545,7 +498,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-I-use-Jekyll"><span class="nav-number">1.</span> <span class="nav-text">Why I use Jekyll.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Requirements"><span class="nav-number">1.1.</span> <span class="nav-text">Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Noticed"><span class="nav-number">1.2.</span> <span class="nav-text">Noticed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resume"><span class="nav-number">1.3.</span> <span class="nav-text">Resume</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.4.</span> <span class="nav-text">References</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-Aria2-的設定"><span class="nav-number">1.</span> <span class="nav-text">配置 Aria2 的設定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">1.1.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">1.2.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -232,6 +232,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://uwaylu.github.io/2017/04/15/Learning-Laravel-Routing-Namespace-and-MVC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Webb Lu (uWay)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="とあるuWayの固有結界">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/15/Learning-Laravel-Routing-Namespace-and-MVC/" itemprop="url">Laravel 學習筆記（三）：Routing, Namespace, and MVC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-04-15T00:00:00+08:00">
+                2017-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="學習-Laravel-的-routes-與-MVC"><a href="#學習-Laravel-的-routes-與-MVC" class="headerlink" title="學習 Laravel 的 routes 與 MVC"></a>學習 Laravel 的 routes 與 MVC</h1><p>本系列筆記跟隨 <a href="https://github.com/johnlui/Learn-Laravel-5/" title="2016 版 Laravel 系列入门教程" target="_blank" rel="noopener">johnlui/Learn-Laravel-5</a> 的教學脈絡；<br><a href="https://github.com/johnlui/Learn-Laravel-5/issues/6" title="2016 版 Laravel 系列入门教程（三）" target="_blank" rel="noopener">2016 版 Laravel 系列入门教程（三）</a></p>
+<p>所有 PHP 框架的核心路由系統，定義訪問 URL 所映射的 MVC code 片段。</p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>閱讀 <a href="https://laravel.com/docs/5.4/routing" title="Laravel 5.4 Docs: Routing" target="_blank" rel="noopener">Laravel 5.4 Routing 官方文檔</a>。  </p>
+<blockquote>
+<p><strong>Note</strong>: 5.3+ 版本的路由檔案規劃和舊版本不同，新版異動後的路由設置在 yourLaravelApp/routes/下，並預先規劃好四種不同用途的 routes。  </p>
+</blockquote>
+<h3 id="閉包-Closure-路由"><a href="#閉包-Closure-路由" class="headerlink" title="閉包( Closure ) 路由"></a>閉包( Closure ) 路由</h3><p>code 有一種 js 感；直接閉包 function 內解決簡單操作。範例如下：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">'/phpinfo'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> phpinfo();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="一般路由：映射至對應的控制器"><a href="#一般路由：映射至對應的控制器" class="headerlink" title="一般路由：映射至對應的控制器"></a>一般路由：映射至對應的控制器</h3><p>有一種 restful 感，對同樣 url 根據不同的 request 返回相對應的 reply。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">'/home'</span>, <span class="string">'HomeController@index'</span>);</span><br><span class="line">Route::post(<span class="string">'/home'</span>, <span class="string">'HomeController@function_for_post_request'</span>);</span><br></pre></td></tr></table></figure>
+<p>小彩蛋討論串：<a href="https://www.zhihu.com/question/31330386/answer/51544599" title="这个laravel路由怎么写?" target="_blank" rel="noopener">这个laravel路由怎么写?</a></p>
+<h2 id="命名空間"><a href="#命名空間" class="headerlink" title="命名空間"></a>命名空間</h2><p>閱讀大神的科普文 <a href="https://lvwenhan.com/php/401.html" title="PHP 命名空间 解惑" target="_blank" rel="noopener">PHP 命名空间 解惑</a>。  </p>
+<ol>
+<li>namespace 和 path/to/dir/file.* 並無關係；抽象的邏輯資料夾概念。  </li>
+<li>必須在 PHP 程式宣告後第一行 <code>&lt;?php</code> 後定義命名空間；反正放錯位置就會報錯，錯幾次就熟了QQ。  </li>
+<li><code>use \name\space as namespace_alias</code> 可以指定 alias name，此例中未指定預設 Class name 為 space。  </li>
+<li>可以透過命名空間調用其它 Class 的靜態方法。  </li>
+</ol>
+<blockquote>
+<p><strong>Note</strong>: 在第 1 點提到 namespace 與實際 path 並無關係，為了方便會與實際文件系統路徑一致。<a href="https://github.com/PizzaLiu/PHP-FIG" title="PHP编码规范（中文版）导读" target="_blank" rel="noopener">PSR-4 命名空間規範 CN</a></p>
+</blockquote>
+<h3 id="Extra-PHP-運行流程"><a href="#Extra-PHP-運行流程" class="headerlink" title="Extra: PHP 運行流程"></a>Extra: PHP 運行流程</h3><p>摘錄自 <a href="https://lvwenhan.com/php/401.html" title="PHP 命名空间 解惑" target="_blank" rel="noopener">PHP 命名空间 解惑</a>。</p>
+<blockquote>
+<h4 id="PHP-运行流程"><a href="#PHP-运行流程" class="headerlink" title="PHP 运行流程"></a>PHP 运行流程</h4><p>在一个典型的 Apache +  mod_php 架构的 PHP 运行环境中，一个 PHP 网站是这样运行的：  </p>
+<ol>
+<li>Apache 收到用户的 HTTP 请求  </li>
+<li>这个请求是以 .php 结尾或者是一个不存在的路径（.htaccess 会将其转发到 index.php）  </li>
+<li>Apache 的 mod_php 会启动一个新的 PHP 进程（PHP 解释器），读取 HTTP 请求的 URL 中的那个 .php 文件或者 index.php  </li>
+<li>被读取进 PHP 解释器的字符串被按照 PHP 的语法进行解析。为了方便理解，我们将这些经过解析的字符串所生成的 context（上下文）命名为 Matrix  </li>
+<li>然后 PHP 解释器会根据从 Matrix 中解析出的特定 PHP 语句（如 require）载入其他 PHP 文件，并将其内容以字符串的形式加入 Matrix  </li>
+<li>最终 Matrix 变成一个数万行代码的巨型上下文（为了便于理解可以想象成巨长的代码文件字符串），PHP 解释器会按照 PHP 语法执行 Matrix，进行数据库连接、网络请求、文件读写等操作  </li>
+<li>每一次的 echo 都会被写入到输出缓冲区，最终这个巨长的代码字符串被执行完毕，PHP 进程退出内存  </li>
+<li>缓冲区中就是要发给用户的 HTTP response，其实就是一堆字符串，只不过它遵守 HTML 规范，可以被浏览器解析。这一堆字符串被 Apache 发送回用户的浏览器，浏览器渲染，用户看到内容</li>
+</ol>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://uwaylu.github.io/2017/04/12/Learning-Laravel-Auth-and-EloquentORM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -549,7 +703,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -562,7 +716,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">標籤</span>
                 
               </div>
